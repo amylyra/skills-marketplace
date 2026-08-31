@@ -1,21 +1,18 @@
 {
   "name": "amy-skills",
+  "description": "Claude Code skills for agent and prompt engineering, by Amy Yuan.",
   "owner": {
     "name": "Amy Yuan",
-    "url": "https://github.com/REPLACE-ME"
+    "url": "https://github.com/amylyra"
   },
   "plugins": [
     {
       "name": "agent-prompt-author",
-      "displayName": "Agent Prompt Author",
-      "description": "Write, revise, and diagnose system prompts and harnesses for LLM agents. Routes to a diagnostic before writing: checks whether the prompt is the bottleneck at all, whether the rule is in a layer that can enforce it, and whether it was written for a model generation that no longer exists.",
-      "version": "0.1.0",
-      "author": "Amy Yuan",
-      "license": "MIT",
-      "keywords": ["prompt-engineering", "agents", "system-prompt", "evals", "context-engineering"],
-      "strict": false,
-      "source": { "source": "./" },
-      "skills": ["./agent-prompt-author"]
+      "source": {
+        "source": "url",
+        "url": "https://github.com/amylyra/agent-prompt-author.git",
+        "ref": "agent-prompt-author--v0.2.0"
+      }
     }
   ]
 }
