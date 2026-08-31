@@ -1,0 +1,21 @@
+{
+  "name": "amy-skills",
+  "owner": {
+    "name": "Amy Yuan",
+    "url": "https://github.com/REPLACE-ME"
+  },
+  "plugins": [
+    {
+      "name": "agent-prompt-author",
+      "displayName": "Agent Prompt Author",
+      "description": "Write, revise, and diagnose system prompts and harnesses for LLM agents. Routes to a diagnostic before writing: checks whether the prompt is the bottleneck at all, whether the rule is in a layer that can enforce it, and whether it was written for a model generation that no longer exists.",
+      "version": "0.1.0",
+      "author": "Amy Yuan",
+      "license": "MIT",
+      "keywords": ["prompt-engineering", "agents", "system-prompt", "evals", "context-engineering"],
+      "strict": false,
+      "source": { "source": "./" },
+      "skills": ["./agent-prompt-author"]
+    }
+  ]
+}
