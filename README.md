@@ -51,15 +51,35 @@ sync with its source repo. Add an entry to `.claude-plugin/marketplace.json`:
 ```json
 {
   "name": "your-skill",
-  "source": { "source": "url", "url": "https://github.com/amylyra/your-skill.git" },
-  "strict": false,
-  "skills": ["./"]
+  "source": {
+    "source": "url",
+    "url": "https://github.com/amylyra/your-skill.git",
+    "ref": "your-skill--v0.1.0"
+  }
 }
 ```
 
-`skills: ["./"]` points at the repo root, for a repo whose `SKILL.md` sits at the
-top level. Use the `url` source rather than the `github` source: `github` clones
-over SSH and fails for anyone without a GitHub SSH key configured.
+That is the whole entry. **Identity lives in the skill repo**, in its own
+`.claude-plugin/plugin.json` — name, version, description, license, and a
+`skills` path. Repeating any of it here creates two control planes that drift,
+and the copy people land on first is the repo, not this file.
+
+Two things that are easy to get wrong:
+
+- **Use the `url` source, not `github`.** The `github` source clones over SSH and
+  fails for anyone without a GitHub SSH key configured, which for a public skill
+  is most people.
+- **Pin a `ref`.** Without one the source clones the default branch, so every
+  install gets HEAD and the version in `plugin.json` is decorative.
+
+Cut the tag from the skill repo, which checks that the manifest and this entry
+agree on the version before it will tag anything:
+
+```bash
+claude plugin tag --push          # creates {name}--v{version}
+```
+
+Then bump the `ref` here.
 
 Validate before pushing:
 
